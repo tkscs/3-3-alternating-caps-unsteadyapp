@@ -1,5 +1,6 @@
 import re
-def alt_caps(original_string,regularExpression):
+import string
+def alt_caps(original_string):
     """Convert a string to Alternating Caps
 
     Args:
@@ -10,11 +11,13 @@ def alt_caps(original_string,regularExpression):
         >>> print(alt_caps("Alternating Capitalization"))
         aLtErNaTiNg CaPiTaLiZaTiOn
     """
-    new_string = re.sub(regularExpression,replaceFirst,original_string)
+    new_string = ""
+    alternate = 0
+    for i in original_string:
+        new_string += ((alternate%2) * i.upper()) + ((not(alternate%2)) * i.lower()) 
+        alternate +=1
+    # YOUR CODE HERE
+
     return new_string
-def replaceFirst(match):
-    new = ""
-    for i in match.groups():
-        new+=i[0].upper() + i[1:]
-    return new
-print(alt_caps("Alternating Capitalization","(..)"))
+print(re.findall("(.).","hello"))
+print(alt_caps("Alternating Capitalization"))
