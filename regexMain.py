@@ -10,10 +10,11 @@ def alt_caps(original_string,regularExpression):
         >>> print(alt_caps("Alternating Capitalization"))
         aLtErNaTiNg CaPiTaLiZaTiOn
     """
-    new_string = ""
-    # YOUR CODE HERE
+    new_string = re.sub(regularExpression,replaceFirst,original_string)
     return new_string
-print(re.findall("(.).","hello"))
-print(re.sub("(.).",r"\1.upper()"))
-print(re.findall(".(.)","hello"))
-print(alt_caps("Alternating Capitalization",""))
+def replaceFirst(match):
+    new = ""
+    for i in match.groups():
+        new+=i[0].upper() + i[1:]
+    return new
+print(alt_caps("Alternating Capitalization","(..)"))
